@@ -1,12 +1,11 @@
-package com.akiryushkin.demo
+package com.akiryushkin.ftsserver
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class FtsServerApplication {
+class FtsServerApplication
 
-	fun main(args: Array<String>) {
-		runApplication<FtsServerApplication>(*args)
-	}
+fun main(args: Array<String>) {
+    runApplication<FtsServerApplication>(*args)
 }
