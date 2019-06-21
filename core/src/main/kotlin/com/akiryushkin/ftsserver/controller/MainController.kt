@@ -1,14 +1,9 @@
 package com.akiryushkin.ftsserver.controller
 
-import com.akiryushkin.ftsserver.configuration.PythonRunnerProperties
 import com.akiryushkin.ftsserver.service.PythonService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
-import java.io.File
+import org.springframework.web.bind.annotation.*
+
 
 @RestController
 @RequestMapping("/api")
@@ -19,6 +14,17 @@ class MainController {
     @GetMapping("/list_scripts")
     fun getScripts(): List<String>? {
         return pythonService.listScripts()
+    }
+
+    @GetMapping("/get_script_data")
+    fun getScript(@RequestParam("uuid") uuid: String): String? {
+        return pythonService.getScriptData(uuid)
+    }
+
+    @GetMapping("/del_script_data")
+    fun delScript(@RequestParam("uuid") uuid: String): String {
+        pythonService.delScriptData(uuid)
+        return "OK"
     }
 
     @GetMapping("/run/{scriptName}/{funcName}")
